@@ -18,6 +18,7 @@
   <!-- Vue CDN -->
   <script src="https://unpkg.com/vue@next"></script>
 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
 </head>
 
 <body>
@@ -38,9 +39,39 @@
                   </div>
               </div>
               <div class="flex justify-between items-center mt-2 gap-2"> <button class="w-full h-12 rounded-md border-2 text-md hover:shadow hover:bg-red-700 hover:border-red-700 hover:text-white ">Chat</button> <button class="w-full h-12 rounded-md bg-blue-700 text-white text-md hover:shadow hover:bg-blue-800">Chat</button> </div>
-          </div>
+              
+            </div>
+            <form @submit="checkForm">
+                <div class="container  p-8 mx-auto mt-10 border rounded-lg">
+                    <h1 class="text-2xl pt-4 pb-4">Registration Form</h1>
+                    <p v-if="errors" class="text-red-500">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                           <li v-for="error in errors" class="text-red-500">{{ error }}</li> 
+                        </ul>
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col">
+                            <label for="firstname" class="text-sm leading-7 text-gray-600">First Name</label>
+                            <input type="text" id="firstname" v-model="firstname1" name="firstname" class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="lastname" class="text-sm leading-7 text-gray-600">Last Name</label>
+                            <input type="text" id="lastname" v-model="lastname1" name="lastname" class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="age" class="text-sm leading-7 text-gray-600">follower</label>
+                            <input type="text" id="age" v-model="follower1" name="age" class="bg-gray-100 rounded px-4 py-2 mb-4">
+                        </div>
+                        <div >
+                            <input type="submit" value="Submit" class="px-8 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+                        </div>
+                    </div>
+                </div>                            
+              </form>
       </div>
   </div>
+  
   </div>
   <!-- my main.js -->
   <script src="./profile.js"></script>

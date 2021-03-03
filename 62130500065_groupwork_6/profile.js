@@ -1,18 +1,51 @@
-    const app = {
+const constraints = {
+    firstname1: {
+        presence: true,
+
+    },
+    lastname1: {
+        presence: true,
+    },
+    follower1: {
+        presence: true,
+        numericality: {
+            lessThan: 9999999
+        }
+    }
+
+}
+    const app = Vue.createApp({
         data() {
             return {
-                msg: 'Hello, Vue3',
                 firstname: 'Patsakorn',
                 lastname: 'Janthawong',
+                firstname1: null,
+                lastname1: null,
+                age: null,
+                msg: 'Hello, Vue3',
                 Article:99,
                 image: './images/mark.jpg',
                 follower: 9999,
+                follower1:null,
                 rating: 9.9,
-                job: 'Associate developer'
+                job: 'Associate developer',
+                errors: null,
 
 
             }
+        },methods: {
+            checkForm(e){
+                this.errors = validate({firstname1: this.firstname1,
+                                        lastname1: this.lastname1,
+                                        follower1: this.follower1},
+                                        constraints)
+                if(this.errors){e.preventDefault();  }
+                    
+                else{
+                    alert("Your profile is updatedsuccessfully.")
+                }
+            }
         }
 
-    }
-mountedApp = Vue.createApp(app).mount('#app')
+    })
+mountedApp = app.mount('#app')
