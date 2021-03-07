@@ -1,7 +1,6 @@
 const constraints = {
     firstname1: {
         presence: true,
-
     },
     lastname1: {
         presence: true,
@@ -11,6 +10,10 @@ const constraints = {
         numericality: {
             lessThan: 9999999
         }
+    },
+    email:{
+        presence: true,
+        email:true
     }
 
 }
@@ -30,6 +33,7 @@ const constraints = {
                 rating: 9.9,
                 job: 'Associate developer',
                 errors: null,
+                email:null,
 
 
             }
@@ -37,7 +41,8 @@ const constraints = {
             checkForm(e){
                 this.errors = validate({firstname1: this.firstname1,
                                         lastname1: this.lastname1,
-                                        follower1: this.follower1},
+                                        follower1: this.follower1,
+                                        email:this.email},
                                         constraints)
                 if(this.errors){e.preventDefault();  }
                     
